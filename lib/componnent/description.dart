@@ -29,7 +29,6 @@ class Description extends StatelessWidget {
             children: [
               Text(namecity,style: TextStyle(fontWeight: FontWeight.w600),),
               Row(
-                // crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Icon(Icons.location_on_outlined,color: Colors.black38,size: 10,),
                   Text(location,style: TextStyle(color: Colors.black38,fontSize: 10),)
@@ -38,9 +37,6 @@ class Description extends StatelessWidget {
 
             ],
           ),
-          // SizedBox(
-          //   height: 5,
-          // ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

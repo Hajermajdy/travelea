@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Space{
  String? PathImage;
  String? text;

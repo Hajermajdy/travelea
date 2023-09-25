@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:travelea/Data/categories_data.dart';
 import 'package:travelea/componnent/card_of_categories.dart';
 import 'package:travelea/componnent/categories.dart';
-import 'package:travelea/sreens/place_sreen.dart';
 import  '../componnent/seletion_navbar.dart';
 import '../app_colors.dart';
 import '../componnent/title_paragraph.dart';
-import '../componnent/description.dart';
 import '../Data/space.dart';
 import '../componnent/card_of_spaces.dart';
 
