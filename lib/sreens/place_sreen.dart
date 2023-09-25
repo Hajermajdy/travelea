@@ -2,9 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:travelea/app_colors.dart';
 import 'package:travelea/componnent/categories.dart';
 import 'package:travelea/componnent/title_paragraph.dart';
+import 'package:travelea/sreens/main_screen.dart';
 import '../componnent/description.dart';
 
 class PlaceScreen extends StatelessWidget {
+
+  String imagepath;
+  String name;
+  String location;
+  String rate;
+  String price;
+
+
+  PlaceScreen({
+    required this.imagepath,
+    required this.name,
+    required this.location,
+    required this.rate,
+    required this.price
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +32,21 @@ class PlaceScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: SizedBox.fromSize(
-                  size: Size.fromRadius(160),
-                  child: Image.asset("assets/images/island.jpg",fit: BoxFit.cover,),
+              GestureDetector(
+                  onTap: () => Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => MainScreen(),)),
+                  child: Icon(Icons.arrow_back_rounded)
+              ),
+              Container(
+                padding: EdgeInsets.only(
+                  left: 7
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: SizedBox.fromSize(
+                    size: Size.fromRadius(155),
+                    child: Image.asset(imagepath,fit: BoxFit.cover,),
+                  ),
                 ),
               ),
               Row(
@@ -46,10 +72,10 @@ class PlaceScreen extends StatelessWidget {
                 children: [
                   Description(
                     checked: true,
-                    namecity: "Mount Brmo",
-                    location: "ialia",
+                    namecity: name,
+                    location: location,
                     price: " ",
-                    rate: "4.7",
+                    rate: rate,
                   )
 
                 ],
@@ -63,7 +89,7 @@ class PlaceScreen extends StatelessWidget {
               ),
               Text("Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur laborum doloribus delectus modi minus ex aliquam suscipit ullam, et quam adi",style: TextStyle(color: Colors.black12),),
               SizedBox(
-                height: 20,
+                height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -88,7 +114,7 @@ class PlaceScreen extends StatelessWidget {
                       onPressed: () {},
                       child: Row(
                         children: [
-                          Text("\$890",style: TextStyle(color: AppColors.KChecked,fontWeight: FontWeight.w600),),
+                          Text(price,style: TextStyle(color: AppColors.KChecked,fontWeight: FontWeight.w600),),
                           Text("/person",style: TextStyle(color: AppColors.KChecked,fontWeight: FontWeight.w300),)
                         ],
                       )

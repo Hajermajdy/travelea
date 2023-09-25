@@ -38,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                 onTap: (){
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MainScreen(),)vela
+                      MaterialPageRoute(builder: (context) => MainScreen(),)
                   );
                 },
                 child: ClipRRect(
@@ -87,47 +87,6 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               )
-              // GestureDetector(
-              //   onTap: () {
-              //     Navigator.pushReplacement(
-              //       context,
-              //       MaterialPageRoute(
-              //           builder: (context) => MainScreen(),
-              //       ),
-              //     );
-              //   },
-              //     child: Container(
-              //       padding: EdgeInsets.all(15),
-              //       decoration: BoxDecoration(
-              //         color: Colors.red,
-              //         borderRadius: BorderRadius.circular(10)
-              //       ),
-              //       child: Stack(
-              //         children: [
-              //           BackdropFilter(
-              //               filter: ImageFilter.blur(
-              //                 sigmaX: 4.0,
-              //                 sigmaY: 4.5,
-              //               ),
-              //
-              //             child: Container(),
-              //           ),
-              //           Container(
-              //             decoration: BoxDecoration(
-              //               gradient: LinearGradient(
-              //                 begin: Alignment.topLeft,
-              //                 end: Alignment.bottomLeft,
-              //                 colors: [
-              //                   Colors.white.withOpacity(0.15),
-              //                   Colors.white.withOpacity(0.05),
-              //                 ]
-              //               )
-              //             ),
-              //           )
-              //         ],
-              //       )
-              //     )
-              // )
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travelea/sreens/main_screen.dart';
 import 'package:travelea/sreens/welcome_screen.dart';
 
 
@@ -8,7 +9,7 @@ class AppRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WelcomeScreen(),
+      home: MainScreen(),
     );
   }
 }

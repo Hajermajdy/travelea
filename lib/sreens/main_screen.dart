@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:travelea/Data/categories_data.dart';
+import 'package:travelea/componnent/card_of_categories.dart';
 import 'package:travelea/componnent/categories.dart';
 import 'package:travelea/sreens/place_sreen.dart';
 import  '../componnent/seletion_navbar.dart';
 import '../app_colors.dart';
 import '../componnent/title_paragraph.dart';
 import '../componnent/description.dart';
+import '../Data/space.dart';
+import '../componnent/card_of_spaces.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,6 +18,28 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+
+  List<Space> spaces = [
+    Space(text: "Mountan",PathImage: "assets/icons/mountain.png",Ckecked: true),
+    Space(text: "Park",PathImage: "assets/icons/theme-park.png",Ckecked: false),
+    Space(text: "beach",PathImage: "assets/icons/sea-waves.png",Ckecked: false),
+    Space(text: "camp",PathImage: "assets/icons/camping.png",Ckecked: false),
+    Space(text: "River",PathImage: "assets/icons/river.png",Ckecked: false),
+  ];
+
+  List<CategoriesData> Categoriesdata = [
+    CategoriesData(imagePath: "assets/images/island.jpg", name: "Mount Bromo", Locatio: "Thailand", rate: "4.9", price: "\$890"),
+    CategoriesData(imagePath: "assets/images/beach.jpg", name: "Mount Bromo", Locatio: "Thailand", rate: "3.1", price: "\$890"),
+    CategoriesData(imagePath: "assets/images/beach2.jpg", name: "Mount Bromo", Locatio: "Thailand", rate: "3.0", price: "\$890"),
+    CategoriesData(imagePath: "assets/images/island.jpg", name: "Mount Bromo", Locatio: "Thailand", rate: "4.2", price: "\$890"),
+    CategoriesData(imagePath: "assets/images/island.jpg", name: "Mount Bromo", Locatio: "Thailand", rate: "2.4", price: "\$890")
+  ];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(Categoriesdata[2].rate);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,30 +134,10 @@ class _MainScreenState extends State<MainScreen> {
               child: ListView.separated(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => Container(
-                    width: 140,
-                    height: 55,
-                    decoration: BoxDecoration(
-                        color: AppColors.KChecked,
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    padding: EdgeInsets.all(10),
-                    child: Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10)
-                          ),
-                          padding: EdgeInsets.all(5),
-                          child: Image.asset("assets/icons/mountain.png",width: 30),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text("Mountain",style: TextStyle(color: Colors.white),),
-                      ],
-                    ),
+                  itemBuilder: (context, index) => CardOfSpaces(
+                      imagePath: spaces[index].PathImage!,
+                      text: spaces[index]!.text!,
+                      checked:spaces[index]!.Ckecked!
                   ),
                   separatorBuilder: (context, index) => SizedBox(width: 12),
                   itemCount: 5,
@@ -161,72 +167,18 @@ class _MainScreenState extends State<MainScreen> {
               margin: EdgeInsets.only(
                   bottom: 10
               ),
-              height: 180,
+              height: 190,
               child: ListView.separated(
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
-                  itemBuilder: (context, index) => Container(
-                    padding: EdgeInsets.all(6),
-                    width: 155,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 2,
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => PlaceScreen(),));
-                      },
-                      child: Column(
-                        // crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: SizedBox.fromSize(
-                                  size: Size.fromRadius(65),
-                                  child: Image.asset("assets/images/island.jpg",fit: BoxFit.cover,),
-                                ),
-                              ),
-                              Align(
-                                alignment: AlignmentDirectional.topEnd,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColors.KChecked,
-                                      borderRadius: BorderRadius.circular(50)
-                                  ),
-                                  padding: EdgeInsets.all(7),
-                                  margin: EdgeInsets.only(
-                                    top: 7,
-                                    right: 20
-                                  ),
-                                  child: Image.asset("assets/icons/heart.png",width: 15,height: 15,),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Description(
-                            checked: false,
-                            namecity: "Mount Brmo",
-                            location: "Thailand",
-                            price: "\$890",
-                            rate: "4.9",
-                          )
-                        ],
-                      ),
-                    ),
+                  itemBuilder: (context, index) => CardOfcategries(
+                      imagePath: Categoriesdata[index].imagePath,
+                      name: Categoriesdata[index].name,
+                      Locatio: Categoriesdata[index].Locatio,
+                      rate: Categoriesdata[index].rate,
+                      price: Categoriesdata[index].price
                   ),
+
                   separatorBuilder: (context, index) => SizedBox(width: 6),
                   itemCount: 5,
                   scrollDirection: Axis.horizontal
